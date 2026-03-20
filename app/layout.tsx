@@ -4,9 +4,9 @@ import "./globals.css";
 import RMEngineeringBackground from "@/components/landing/BackgroundEngenharia";
 
 export const metadata: Metadata = {
-  title: "Portal do Pesquisador",
+  title: "RMT ENGENHARIA",
   description:
-    "Portal acadêmico dedicado à publicação de pesquisas científicas, artigos e produções intelectuais de um pesquisador.",
+    "Desenvolvemos obras, reformas e soluções em engenharia com visão técnica, acabamento de excelência e compromisso com cada detalhe do seu projeto.",
 };
 
 export default function RootLayout({
