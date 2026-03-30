@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import RMEngineeringBackground from "@/components/landing/BackgroundEngenharia";
+import EbenezerFaithEducationBackground from "@/components/landing/BackgroundEbenezer";
+
 
 export const metadata: Metadata = {
   title: "RMT ENGENHARIA",
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="bg-[#f8f4ec] text-slate-800 antialiased">
+        <section className="relative overflow-hidden bg-[#0b1633] text-white">
 
-        <div className="relative z-10">
 
-          {children}
-        </div>
+          <main className="min-h-screen bg-[#f7f4ee] text-slate-800">
+            {children}
+          </main>
+        </section>
       </body>
     </html>
   );

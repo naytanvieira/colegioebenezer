@@ -1,380 +1,524 @@
 'use client';
 
-import React from 'react';
-import { Building2, HardHat, Hammer, PlayCircle, Quote, Star, ArrowRight, CheckCircle2 } from 'lucide-react';
-import RMEngineeringSeriousBackground from '@/components/landing/BackgroundEngenharia';
-import EventoCard from '@/components/landing/EventoCard';
+import EbenezerFaithEducationBackground from '@/components/landing/BackgroundEbenezer';
+import { motion } from 'framer-motion';
+import {
+  BookOpen,
+  HeartHandshake,
+  ShieldCheck,
+  Sparkles,
+  Phone,
+  MessageCircle,
+  GraduationCap,
+  Users,
+  School,
+  CheckCircle2,
+  Star,
+  Baby,
+  PencilRuler,
+  Compass,
+  Quote,
+  Cross,
+} from 'lucide-react';
 
-const services = [
+const etapas = [
   {
-    icon: Building2,
-    title: 'Projetos e Execução de Obras',
+    icon: Baby,
+    title: 'Educação Infantil',
+    subtitle: 'Creche e Pré-escola',
     description:
-      'Soluções completas em engenharia com planejamento, acompanhamento técnico e execução com alto padrão de qualidade.',
+      'Um ambiente acolhedor, seguro e cheio de carinho para os primeiros passos do desenvolvimento infantil, com base em princípios cristãos e aprendizado lúdico.',
   },
   {
-    icon: HardHat,
-    title: 'Reformas e Manutenções',
+    icon: PencilRuler,
+    title: 'Fundamental I',
+    subtitle: '1º ao 5º ano',
     description:
-      'Reformas residenciais, comerciais e estruturais com foco em segurança, acabamento e eficiência em cada etapa.',
+      'Construção de uma base sólida em leitura, escrita, matemática e convivência, fortalecendo o caráter, o respeito e o amor ao próximo.',
   },
   {
-    icon: Hammer,
-    title: 'Consultoria Técnica',
+    icon: Compass,
+    title: 'Fundamental II',
+    subtitle: '6º ao 9º ano',
     description:
-      'Apoio especializado para análise, planejamento, regularização e tomada de decisão em projetos de engenharia.',
+      'Preparação acadêmica e emocional para os próximos desafios, desenvolvendo autonomia, responsabilidade e princípios para a vida.',
   },
 ];
 
-const testimonials = [
+const diferenciais = [
+  'Educação com base cristã e princípios evangélicos',
+  'Formação acadêmica com desenvolvimento de caráter',
+  'Ambiente acolhedor, seguro e familiar',
+  'Acompanhamento próximo da jornada do aluno',
+  'Ensino da creche ao 9º ano em uma única instituição',
+  'Comunicação ativa com as famílias',
+];
+
+const pilares = [
   {
-    name: 'Carlos Henrique',
-    role: 'Cliente Residencial',
-    text: 'A experiência com a RM Engenharia foi excelente. A obra foi entregue com organização, qualidade e muita transparência durante todo o processo.',
+    icon: BookOpen,
+    title: 'Excelência acadêmica',
+    description:
+      'Conteúdo de qualidade, acompanhamento pedagógico e atenção ao desenvolvimento de cada aluno.',
   },
   {
-    name: 'Fernanda Souza',
-    role: 'Empresária',
-    text: 'Precisávamos de agilidade e confiança para a reforma do nosso espaço comercial, e a equipe superou nossas expectativas.',
+    icon: HeartHandshake,
+    title: 'Formação com amor',
+    description:
+      'Cuidado, acolhimento e proximidade para que cada criança se sinta segura e valorizada.',
   },
   {
-    name: 'Ricardo Almeida',
-    role: 'Cliente Comercial',
-    text: 'Atendimento profissional, execução impecável e ótimo suporte técnico. Recomendo para quem busca segurança e resultado.',
+    icon: Cross,
+    title: 'Princípios cristãos',
+    description:
+      'Uma educação fundamentada na fé, no respeito, na ética e em valores que acompanham o aluno por toda a vida.',
   },
 ];
 
-const videos = [
+const depoimentos = [
   {
-    title: 'Obra residencial de alto padrão',
-    category: 'Residencial',
-    video: '/rm.mp4',
-    thumb:
-      '/thumb_rm.png',
+    name: 'Família Oliveira',
+    text: 'O Colégio Ebenezer nos transmite paz e confiança. Vemos no nosso filho não apenas evolução escolar, mas também crescimento em valores e comportamento.',
   },
-  // {
-  //   title: 'Reforma e modernização comercial',
-  //   category: 'Comercial',
-  //   video: '/rm2.mp4',
-  //   thumb:
-  //     'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
-  // },
   {
-    title: 'Acompanhamento técnico de obra',
-    category: 'Execução',
-    video: '/rm2.mp4',
-    thumb:
-      '/thumb_rm2.jpg',
+    name: 'Família Santos',
+    text: 'É uma escola que realmente cuida. O ambiente é acolhedor, a equipe é atenciosa e sentimos que nossa filha está sendo preparada para a vida.',
+  },
+  {
+    name: 'Família Rocha',
+    text: 'Encontramos no Colégio Ebenezer o equilíbrio que buscávamos: ensino de qualidade, disciplina, carinho e princípios cristãos bem presentes no dia a dia.',
   },
 ];
 
-export default function RMEngenhariaLandingPage() {
+const stats = [
+  { value: 'Creche ao 9º ano', label: 'Ensino completo em todas as fases' },
+  { value: 'Base cristã', label: 'Educação guiada por princípios' },
+  { value: 'Ambiente seguro', label: 'Cuidado e acolhimento diário' },
+  { value: 'Família + Escola', label: 'Parceria no desenvolvimento' },
+];
+
+export default function ColegioEbenezerLandingPage() {
   return (
-    <main className="min-h-screen bg-[#07111f] text-white">
-      {/* <RMEngineeringSeriousBackground /> */}
-      <section className="relative overflow-hidden">
-        <RMEngineeringSeriousBackground />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(26,95,122,0.35),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(212,175,55,0.18),transparent_30%)]" />
-        <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#0d5c75]/20 blur-3xl" />
-        <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#d4af37]/10 blur-3xl" />
+    <>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 py-24 md:px-10 lg:grid-cols-2 lg:py-32">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-[#d4af37]" />
-              Engenharia com qualidade, segurança e confiança
+      <section className="relative overflow-hidden bg-[#0b1633] text-white">
+        <EbenezerFaithEducationBackground />
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(213,160,51,0.18),transparent_30%),radial-gradient(circle_at_right,rgba(255,255,255,0.08),transparent_22%)]" />
+          <div className="absolute -left-16 top-20 h-64 w-64 rounded-full bg-[#d5a033]/10 blur-3xl" />
+          <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-6 py-6 lg:px-8">
+          <header className="flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#d5a033] to-[#f0d28a] shadow-lg shadow-[#d5a033]/20">
+                <School className="h-5 w-5 text-[#0b1633]" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold tracking-[0.25em] text-[#f0d28a] uppercase">Colégio</p>
+                <h1 className="text-lg font-bold">Ebenezer</h1>
+              </div>
             </div>
 
-            <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight md:text-6xl">
-              <span className="text-white">RMT</span>
-              <span className="text-[#d4af37]">Engenharia</span>
-              <br />
-              transformando projetos em resultados reais.
-            </h1>
+            <nav className="hidden items-center gap-6 text-sm text-white/80 lg:flex">
+              <a href="#sobre" className="transition hover:text-white">Sobre</a>
+              <a href="#etapas" className="transition hover:text-white">Etapas</a>
+              <a href="#diferenciais" className="transition hover:text-white">Diferenciais</a>
+              <a href="#depoimentos" className="transition hover:text-white">Depoimentos</a>
+            </nav>
 
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/70 md:text-lg">
-              Desenvolvemos obras, reformas e soluções em engenharia com visão técnica,
-              acabamento de excelência e compromisso com cada detalhe do seu projeto.
+            <a
+              href="https://wa.me/5500000000000"
+              className="hidden rounded-full bg-[#d5a033] px-5 py-3 text-sm font-semibold text-[#0b1633] transition hover:scale-[1.02] lg:inline-flex"
+            >
+              Agendar visita
+            </a>
+          </header>
+
+          <div className="grid items-center gap-14 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#d5a033]/30 bg-[#d5a033]/10 px-4 py-2 text-sm text-[#f0d28a]"
+              >
+                <Sparkles className="h-4 w-4" />
+                Educação com propósito, amor e princípios cristãos
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.05 }}
+                className="max-w-3xl text-4xl font-black leading-tight sm:text-5xl lg:text-6xl"
+              >
+                Um lugar seguro para o seu filho <span className="text-[#f0d28a]">crescer, aprender e viver valores para toda a vida</span>
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="mt-6 max-w-2xl text-lg leading-8 text-white/78"
+              >
+                No <strong>Colégio Ebenezer</strong>, acompanhamos cada fase da infância à pré-adolescência com ensino de qualidade, acolhimento verdadeiro e uma base cristã que fortalece caráter, respeito e propósito.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="mt-8 flex flex-col gap-4 sm:flex-row"
+              >
+                <a
+                  href="https://wa.me/5500000000000"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d5a033] px-6 py-4 font-semibold text-[#0b1633] shadow-xl shadow-[#d5a033]/20 transition hover:-translate-y-0.5"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  Falar no WhatsApp
+                </a>
+                <a
+                  href="#contato"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white backdrop-blur transition hover:bg-white/10"
+                >
+                  <Phone className="h-5 w-5" />
+                  Agendar visita
+                </a>
+              </motion.div>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                {stats.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.06 }}
+                    className="rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md"
+                  >
+                    <p className="text-lg font-extrabold text-[#f0d28a]">{item.value}</p>
+                    <p className="mt-1 text-sm leading-6 text-white/75">{item.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="relative"
+            >
+              <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-[#d5a033]/20 to-transparent blur-2xl" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-3 shadow-2xl shadow-black/20 backdrop-blur-xl">
+                <div className="overflow-hidden rounded-[1.6rem] bg-slate-200">
+                  <img
+                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
+                    alt="Alunos em ambiente escolar acolhedor"
+                    className="h-[560px] w-full object-cover"
+                  />
+                </div>
+
+                <div className="absolute bottom-8 left-8 right-8 rounded-[1.5rem] border border-white/20 bg-[#0b1633]/80 p-5 text-white backdrop-blur-lg">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#d5a033] text-[#0b1633]">
+                      <ShieldCheck className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-lg font-bold">Educar com excelência, ensinar com amor e formar com princípios</p>
+                      <p className="mt-2 text-sm leading-6 text-white/75">
+                        Da creche ao 9º ano, uma jornada completa de aprendizado em parceria com a família.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+
+        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="rounded-[2rem] bg-white p-8 shadow-[0_20px_80px_rgba(11,22,51,0.08)] ring-1 ring-slate-200">
+            <div className="mb-5 inline-flex rounded-full bg-[#0b1633]/5 px-4 py-2 text-sm font-semibold text-[#0b1633]">
+              Sobre o Colégio Ebenezer
+            </div>
+            <h3 className="text-3xl font-black leading-tight text-[#0b1633] sm:text-4xl">
+              Uma escola que acolhe, ensina e caminha ao lado da sua família
+            </h3>
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Sabemos que escolher uma escola é entregar um dos maiores tesouros da família. Por isso, o <strong>Colégio Ebenezer</strong> une ensino de qualidade, ambiente seguro e uma formação baseada em princípios cristãos para cuidar do desenvolvimento acadêmico, emocional e espiritual do seu filho.
+            </p>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              Aqui, cada criança é vista com atenção, carinho e propósito. Mais do que ensinar conteúdos, queremos participar da formação de pessoas íntegras, preparadas para o futuro e guiadas por valores que permanecem por toda a vida.
+            </p>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-3">
+            {pilares.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="rounded-[1.8rem] bg-gradient-to-b from-white to-[#fcfaf6] p-6 shadow-[0_20px_80px_rgba(11,22,51,0.06)] ring-1 ring-slate-200"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0b1633] text-[#f0d28a] shadow-lg">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h4 className="mt-5 text-xl font-bold text-[#0b1633]">{item.title}</h4>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="etapas" className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex rounded-full bg-[#d5a033]/10 px-4 py-2 text-sm font-semibold text-[#9d761a]">
+              Uma jornada completa
+            </div>
+            <h3 className="mt-5 text-3xl font-black text-[#0b1633] sm:text-4xl">
+              Cada fase do seu filho cuidada com atenção, propósito e desenvolvimento contínuo
+            </h3>
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Da descoberta da infância aos desafios do 9º ano, oferecemos uma caminhada estruturada para que cada aluno cresça com segurança, aprendizado e valores sólidos.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {etapas.map((etapa, index) => {
+              const Icon = etapa.icon;
+              return (
+                <motion.div
+                  key={etapa.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="group rounded-[2rem] border border-slate-200 bg-[#fcfbf8] p-7 shadow-[0_18px_70px_rgba(11,22,51,0.05)] transition hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(11,22,51,0.08)]"
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0b1633] text-[#f0d28a] transition group-hover:scale-105">
+                    <Icon className="h-7 w-7" />
+                  </div>
+                  <p className="mt-6 text-sm font-semibold uppercase tracking-[0.25em] text-[#b18421]">
+                    {etapa.subtitle}
+                  </p>
+                  <h4 className="mt-2 text-2xl font-bold text-[#0b1633]">{etapa.title}</h4>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">{etapa.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="diferenciais" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+          <div>
+            <div className="inline-flex rounded-full bg-[#0b1633]/5 px-4 py-2 text-sm font-semibold text-[#0b1633]">
+              Por que escolher o Colégio Ebenezer?
+            </div>
+            <h3 className="mt-5 text-3xl font-black text-[#0b1633] sm:text-4xl">
+              Porque educação de verdade também forma o coração, o caráter e os valores
+            </h3>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600">
+              Nossa proposta vai além da sala de aula. Queremos que seu filho aprenda com qualidade, conviva com respeito, desenvolva responsabilidade e cresça em um ambiente onde a fé e o amor ao próximo fazem parte do dia a dia.
             </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#contato"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#d4af37] px-6 py-4 font-semibold text-[#07111f] transition hover:scale-[1.02]"
-              >
-                Solicitar orçamento
-                <ArrowRight className="h-5 w-5" />
-              </a>
-              <a
-                href="#videos"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
-              >
-                Ver obras realizadas
-              </a>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {[
-                'Projetos residenciais',
-                'Reformas comerciais',
-                'Acompanhamento técnico',
-              ].map((item) => (
-                <div
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {diferenciais.map((item, index) => (
+                <motion.div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/80 backdrop-blur"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  className="flex items-start gap-3 rounded-[1.4rem] bg-white p-4 shadow-[0_14px_50px_rgba(11,22,51,0.06)] ring-1 ring-slate-200"
                 >
-                  <div className="mb-2">
-                    <CheckCircle2 className="h-5 w-5 text-[#d4af37]" />
-                  </div>
-                  {item}
-                </div>
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#b18421]" />
+                  <p className="text-sm leading-7 text-slate-700">{item}</p>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[#d4af37]/20 to-[#0d5c75]/20 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur">
-              <img
-                src="/profile.png"
-                alt="Equipe de engenharia em obra"
-                className="h-[520px] w-full rounded-[1.5rem] object-cover"
-              />
-              <div className="absolute bottom-8 left-8 right-8 rounded-[1.5rem] border border-white/10 bg-[#07111f]/80 p-5 backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Excelência em Engenharia</p>
-                <p className="mt-2 text-xl font-semibold">Planejamento sólido, execução precisa e entrega com qualidade.</p>
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#0b1633] p-8 text-white shadow-[0_24px_100px_rgba(11,22,51,0.16)]">
+            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#d5a033]/20 blur-3xl" />
+            <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-sky-400/10 blur-3xl" />
+            <div className="relative">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#d5a033] text-[#0b1633]">
+                <GraduationCap className="h-8 w-8" />
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="servicos" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#d4af37]">Nossos serviços</p>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">Soluções completas para sua obra</h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            Atuamos com responsabilidade técnica e foco em resultado para entregar projetos seguros, modernos e bem executados.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.title}
-                className="group rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition duration-300 hover:-translate-y-1 hover:border-[#d4af37]/40 hover:bg-white/[0.07]"
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#d4af37]/10 ring-1 ring-[#d4af37]/20">
-                  <Icon className="h-7 w-7 text-[#d4af37]" />
-                </div>
-                <h3 className="mt-6 text-2xl font-bold">{service.title}</h3>
-                <p className="mt-4 leading-7 text-white/70">{service.description}</p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="border-y border-white/10 bg-white/[0.03]">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-14 md:grid-cols-3 md:px-10">
-          {[
-            { value: '+40', label: 'Projetos entregues' },
-            { value: '98%', label: 'Clientes satisfeitos' },
-            { value: '+3 anos', label: 'Experiência no setor' },
-          ].map((item) => (
-            <div key={item.label} className="rounded-[1.75rem] border border-white/10 bg-[#08172a] p-8 text-center">
-              <p className="text-4xl font-black text-[#d4af37]">{item.value}</p>
-              <p className="mt-2 text-white/70">{item.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="feedbacks" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#d4af37]">Feedback dos clientes</p>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">Confiança construída em cada entrega</h2>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((item) => (
-            <div
-              key={item.name}
-              className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8"
-            >
-              <div className="mb-5 flex items-center justify-between">
-                <Quote className="h-9 w-9 text-[#d4af37]" />
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} className="h-4 w-4 fill-[#d4af37] text-[#d4af37]" />
-                  ))}
-                </div>
-              </div>
-              <p className="leading-7 text-white/75">“{item.text}”</p>
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <p className="font-semibold">{item.name}</p>
-                <p className="text-sm text-white/55">{item.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="videos" className="mx-auto max-w-7xl px-6 pb-20 md:px-10">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#d4af37]">Obras em vídeo</p>
-            <h2 className="mt-3 text-3xl font-black md:text-5xl">Veja algumas das nossas execuções</h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Uma galeria visual para apresentar vídeos de obras já realizadas e reforçar a credibilidade da marca.
-            </p>
-          </div>
-          <a
-            href="#contato"
-            className="inline-flex w-fit items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white hover:bg-white/10"
-          >
-            Falar com a equipe
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {videos.map((video) => (
-            <div
-              key={video.title}
-              className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04]"
-            >
-              <div className="relative h-80 overflow-hidden">
-                <EventoCard
-                  imagem={video.thumb}
-                  video={video.video}
-                  titulo={video.title}
-                />
-
-                {/* <div className="absolute inset-0 bg-gradient-to-t from-[#07111f] via-[#07111f]/20 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <button className="flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition hover:scale-105 hover:bg-white/20">
-                    <PlayCircle className="h-10 w-10 text-white" />
-                  </button>
-                </div> */}
-              </div>
-              <div className="p-6">
-                <span className="inline-block rounded-full bg-[#d4af37]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#d4af37]">
-                  {video.category}
-                </span>
-                <h3 className="mt-4 text-xl font-bold">{video.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">
-                  Espaço ideal para incorporar vídeo do YouTube, Instagram ou arquivo hospedado.
+              <h4 className="mt-6 text-2xl font-black leading-tight text-white sm:text-3xl">
+                “Instrua a criança no caminho em que deve andar...”
+              </h4>
+              <p className="mt-4 text-base leading-8 text-white/78">
+                No Colégio Ebenezer, acreditamos que cada fase da infância e da adolescência deve ser conduzida com sabedoria, direção e amor. É por isso que nossa educação busca caminhar lado a lado com a família.
+              </p>
+              <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur-md">
+                <p className="text-sm leading-7 text-white/85">
+                  <strong>Provérbios 22:6</strong> — “Instrua a criança no caminho em que deve andar, e até quando envelhecer não se desviará dele.”
                 </p>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* PROJETOS ARQUITETÔNICOS */}
-      <section id="projetos" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#d4af37]">
-            Projetos
-          </p>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">
-            Projetos Arquitetônicos
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            Conheça alguns dos projetos desenvolvidos e executados pela RMT Engenharia,
-            com foco em qualidade, design e excelência construtiva.
-          </p>
+      <section className="bg-[#fffaf0] py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex rounded-full bg-[#d5a033]/10 px-4 py-2 text-sm font-semibold text-[#9d761a]">
+              Segurança, cuidado e parceria
+            </div>
+            <h3 className="mt-5 text-3xl font-black text-[#0b1633] sm:text-4xl">
+              Seu filho merece uma escola onde ele seja visto, cuidado e incentivado todos os dias
+            </h3>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: ShieldCheck,
+                title: 'Ambiente seguro',
+                description:
+                  'Uma rotina estruturada para que as famílias sintam confiança ao deixar seus filhos em nosso cuidado.',
+              },
+              {
+                icon: Users,
+                title: 'Equipe próxima das famílias',
+                description:
+                  'Valorizamos o diálogo com os pais para acompanhar a evolução e as necessidades de cada aluno.',
+              },
+              {
+                icon: HeartHandshake,
+                title: 'Acolhimento verdadeiro',
+                description:
+                  'Cada criança é recebida com atenção, carinho e respeito, em um ambiente familiar e amoroso.',
+              },
+            ].map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.06 }}
+                  className="rounded-[1.8rem] bg-white p-7 shadow-[0_18px_60px_rgba(11,22,51,0.06)] ring-1 ring-slate-200"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0b1633] text-[#f0d28a]">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h4 className="mt-5 text-xl font-bold text-[#0b1633]">{card.title}</h4>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{card.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="depoimentos" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex rounded-full bg-[#0b1633]/5 px-4 py-2 text-sm font-semibold text-[#0b1633]">
+            O que as famílias sentem
+          </div>
+          <h3 className="mt-5 text-3xl font-black text-[#0b1633] sm:text-4xl">
+            Quando a escola compartilha os mesmos valores da família, tudo faz mais sentido
+          </h3>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {[
-            {
-              title: 'Casa moderna de alto padrão',
-              category: 'Residencial',
-              image:
-                'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-            },
-            {
-              title: 'Projeto comercial contemporâneo',
-              category: 'Comercial',
-              image:
-                'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
-            },
-            {
-              title: 'Residência com conceito minimalista',
-              category: 'Residencial',
-              image:
-                'arq.png',
-            },
-          ].map((project) => (
-            <div
-              key={project.title}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/10"
+          {depoimentos.map((depoimento, index) => (
+            <motion.div
+              key={depoimento.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="rounded-[2rem] bg-white p-7 shadow-[0_18px_70px_rgba(11,22,51,0.06)] ring-1 ring-slate-200"
             >
-              {/* IMAGEM */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className="h-[420px] w-full object-cover transition duration-500 group-hover:scale-110"
-              />
-
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#07111f] via-[#07111f]/30 to-transparent" />
-
-              {/* CONTEÚDO */}
-              <div className="absolute bottom-0 p-6">
-                <span className="inline-block rounded-full bg-[#d4af37]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#d4af37]">
-                  {project.category}
-                </span>
-
-                <h3 className="mt-4 text-xl font-bold">
-                  {project.title}
-                </h3>
-
-                {/* <button className="mt-4 opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-semibold text-[#d4af37]">
-                  Ver projeto →
-                </button> */}
+              <div className="flex items-center justify-between">
+                <Quote className="h-9 w-9 text-[#d5a033]" />
+                <div className="flex gap-1 text-[#d5a033]">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
               </div>
-            </div>
+              <p className="mt-6 text-sm leading-8 text-slate-600">{depoimento.text}</p>
+              <p className="mt-6 text-base font-bold text-[#0b1633]">{depoimento.name}</p>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      <section id="contato" className="px-6 pb-24 md:px-10">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-r from-[#0b1b31] to-[#0d2840] p-8 md:p-12">
-          <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#d4af37]">Vamos conversar</p>
-              <h2 className="mt-3 max-w-3xl text-3xl font-black md:text-5xl">
-                Pronto para tirar seu projeto do papel com segurança e qualidade?
-              </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">
-                Entre em contato com a RM Engenharia e solicite um orçamento personalizado para sua obra, reforma ou consultoria técnica.
-              </p>
-            </div>
+      <section id="contato" className="pb-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="overflow-hidden rounded-[2.2rem] bg-[#0b1633] p-8 text-white shadow-[0_30px_110px_rgba(11,22,51,0.18)] sm:p-12">
+            <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+              <div>
+                <div className="inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-[#f0d28a]">
+                  Matrículas abertas
+                </div>
+                <h3 className="mt-5 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
+                  Agende uma visita e conheça de perto o ambiente que pode fazer parte da história do seu filho
+                </h3>
+                <p className="mt-5 max-w-2xl text-base leading-8 text-white/75">
+                  Venha conhecer a estrutura, conversar com nossa equipe e descobrir como o Colégio Ebenezer pode caminhar junto com a sua família na formação do seu filho.
+                </p>
 
-            <div className="flex flex-col gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur">
-              <a
-                href="https://wa.me/553195640311"
-                target='_blank'
-                className="inline-flex items-center justify-center rounded-2xl bg-[#d4af37] px-5 py-4 font-semibold text-[#07111f] transition hover:scale-[1.02]"
-              >
-                Solicitar orçamento agora
-              </a>
-              <a
-                href="https://wa.me/553195640311"
-                target='_blank'
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 px-5 py-4 font-semibold text-white transition hover:bg-white/10"
-              >
-                Falar pelo WhatsApp
-              </a>
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <a
+                    href="https://wa.me/5500000000000"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d5a033] px-6 py-4 font-semibold text-[#0b1633] transition hover:-translate-y-0.5"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    Quero falar no WhatsApp
+                  </a>
+                  <a
+                    href="tel:+5500000000000"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
+                  >
+                    <Phone className="h-5 w-5" />
+                    Ligar agora
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-md">
+                <h4 className="text-2xl font-bold">Informações rápidas</h4>
+                <div className="mt-6 space-y-4 text-white/80">
+                  <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-[0.25em] text-[#f0d28a]">Atendimento</p>
+                    <p className="mt-2 text-sm">Segunda a sexta, de 07h às 18h</p>
+                  </div>
+                  <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-[0.25em] text-[#f0d28a]">WhatsApp</p>
+                    <p className="mt-2 text-sm">(00) 00000-0000</p>
+                  </div>
+                  <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-[0.25em] text-[#f0d28a]">Endereço</p>
+                    <p className="mt-2 text-sm">Rua Exemplo, 123 — Bairro Exemplo</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
+
+    </>
   );
 }

@@ -2,16 +2,17 @@
 
 import React, { useEffect, useRef } from 'react';
 
-type BlueprintHouse = {
+type FaithSymbol = {
     x: number;
     y: number;
     scale: number;
     opacity: number;
     pulse: number;
     pulseSpeed: number;
+    rotation: number;
 };
 
-type BuildLine = {
+type LightTrail = {
     x1: number;
     y1: number;
     x2: number;
@@ -21,7 +22,7 @@ type BuildLine = {
     delay: number;
 };
 
-export default function RMEngineeringSeriousBackground() {
+export default function EbenezerFaithEducationBackground() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     useEffect(() => {
@@ -36,8 +37,8 @@ export default function RMEngineeringSeriousBackground() {
         let height = window.innerHeight;
         const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-        const houses: BlueprintHouse[] = [];
-        const buildLines: BuildLine[] = [];
+        const symbols: FaithSymbol[] = [];
+        const trails: LightTrail[] = [];
 
         const mouse = {
             x: width / 2,
@@ -63,38 +64,38 @@ export default function RMEngineeringSeriousBackground() {
         };
 
         const createScene = () => {
-            houses.length = 0;
-            buildLines.length = 0;
+            symbols.length = 0;
+            trails.length = 0;
 
-            const houseCount = width < 768 ? 4 : 7;
+            const symbolCount = width < 768 ? 5 : 8;
 
-            for (let i = 0; i < houseCount; i++) {
-                houses.push({
-                    x: random(60, width - 260),
-                    y: random(100, height - 220),
-                    scale: random(0.8, 1.35),
-                    opacity: random(0.12, 0.24),
+            for (let i = 0; i < symbolCount; i++) {
+                symbols.push({
+                    x: random(60, width - 220),
+                    y: random(80, height - 180),
+                    scale: random(0.75, 1.25),
+                    opacity: random(0.08, 0.18),
                     pulse: random(0, Math.PI * 2),
                     pulseSpeed: random(0.004, 0.01),
+                    rotation: random(-0.08, 0.08),
                 });
             }
 
-            const lineCount = width < 768 ? 18 : 36;
+            const lineCount = width < 768 ? 18 : 34;
 
             for (let i = 0; i < lineCount; i++) {
                 const x1 = random(0, width);
                 const y1 = random(0, height);
-                const horizontal = Math.random() > 0.45;
+                const horizontal = Math.random() > 0.5;
+                const length = random(70, 180);
 
-                const length = random(60, 180);
-
-                buildLines.push({
+                trails.push({
                     x1,
                     y1,
                     x2: horizontal ? x1 + length : x1,
                     y2: horizontal ? y1 : y1 + length,
                     progress: Math.random(),
-                    speed: random(0.0025, 0.008),
+                    speed: random(0.002, 0.006),
                     delay: random(0, 1),
                 });
             }
@@ -107,9 +108,9 @@ export default function RMEngineeringSeriousBackground() {
 
         const drawBackground = () => {
             const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, '#07111f');
-            gradient.addColorStop(0.5, '#0b1728');
-            gradient.addColorStop(1, '#050c15');
+            gradient.addColorStop(0, '#081224');
+            gradient.addColorStop(0.5, '#0d1b38');
+            gradient.addColorStop(1, '#060d19');
 
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, width, height);
@@ -120,7 +121,7 @@ export default function RMEngineeringSeriousBackground() {
             ctx.strokeStyle = 'rgba(255,255,255,0.025)';
             ctx.lineWidth = 1;
 
-            const gap = 48;
+            const gap = 52;
 
             for (let x = 0; x <= width; x += gap) {
                 ctx.beginPath();
@@ -142,136 +143,148 @@ export default function RMEngineeringSeriousBackground() {
         const drawAtmosphere = (offsetX: number, offsetY: number) => {
             const radial = ctx.createRadialGradient(
                 width * 0.5 + offsetX,
-                height * 0.35 + offsetY,
+                height * 0.28 + offsetY,
                 20,
                 width * 0.5 + offsetX,
-                height * 0.35 + offsetY,
-                width * 0.65
+                height * 0.28 + offsetY,
+                width * 0.7
             );
 
-            radial.addColorStop(0, 'rgba(212, 175, 55, 0.08)');
-            radial.addColorStop(0.45, 'rgba(38, 97, 156, 0.05)');
+            radial.addColorStop(0, 'rgba(213,160,51,0.10)');
+            radial.addColorStop(0.45, 'rgba(0,198,247,0.05)');
             radial.addColorStop(1, 'rgba(0,0,0,0)');
 
             ctx.fillStyle = radial;
             ctx.fillRect(0, 0, width, height);
         };
 
-        const drawBlueprintDots = () => {
+        const drawSoftCross = (offsetX: number, offsetY: number) => {
+            const cx = width * 0.82 + offsetX * 0.4;
+            const cy = height * 0.2 + offsetY * 0.4;
+
+            ctx.save();
+            ctx.strokeStyle = 'rgba(213,160,51,0.07)';
+            ctx.lineWidth = 10;
+            ctx.lineCap = 'round';
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - 50);
+            ctx.lineTo(cx, cy + 60);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(cx - 35, cy - 5);
+            ctx.lineTo(cx + 35, cy - 5);
+            ctx.stroke();
+
+            ctx.restore();
+        };
+
+        const drawLightDots = () => {
             ctx.save();
 
-            for (let i = 0; i < 42; i++) {
-                const x = ((i * 173) % width);
-                const y = ((i * 97) % height);
+            for (let i = 0; i < 54; i++) {
+                const x = (i * 167) % width;
+                const y = (i * 89) % height;
 
                 ctx.beginPath();
-                ctx.arc(x, y, 1.2, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.08)';
+                ctx.arc(x, y, 1.3, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(213,160,51,0.09)';
                 ctx.fill();
             }
 
             ctx.restore();
         };
 
-        const drawHouseWireframe = (
+        const drawOpenBook = (
             x: number,
             y: number,
             scale: number,
             opacity: number,
-            pulseFactor: number
+            pulseFactor: number,
+            rotation: number
         ) => {
             const w = 120 * scale;
-            const h = 78 * scale;
-            const roofH = 42 * scale;
+            const h = 72 * scale;
 
             ctx.save();
             ctx.translate(x, y);
+            ctx.rotate(rotation);
 
-            ctx.strokeStyle = `rgba(212, 175, 55, ${opacity + pulseFactor * 0.05})`;
-            ctx.lineWidth = 1.2;
+            ctx.strokeStyle = `rgba(213,160,51,${opacity + pulseFactor * 0.05})`;
+            ctx.lineWidth = 1.25;
 
-            // base
-            ctx.strokeRect(0, roofH, w, h);
-
-            // telhado
+            // capa/base do livro
             ctx.beginPath();
-            ctx.moveTo(-8 * scale, roofH);
-            ctx.lineTo(w / 2, 0);
-            ctx.lineTo(w + 8 * scale, roofH);
+            ctx.moveTo(0, 12 * scale);
+            ctx.quadraticCurveTo(w * 0.25, -4 * scale, w * 0.5, 12 * scale);
+            ctx.quadraticCurveTo(w * 0.75, -4 * scale, w, 12 * scale);
             ctx.stroke();
 
-            // linha do telhado
+            // páginas esquerda e direita
             ctx.beginPath();
-            ctx.moveTo(w / 2, 0);
-            ctx.lineTo(w / 2, roofH - 6 * scale);
+            ctx.moveTo(0, 12 * scale);
+            ctx.quadraticCurveTo(w * 0.23, 28 * scale, w * 0.5, 20 * scale);
+            ctx.quadraticCurveTo(w * 0.77, 28 * scale, w, 12 * scale);
             ctx.stroke();
 
-            // porta
-            ctx.strokeRect(w * 0.44, roofH + h * 0.42, 18 * scale, 34 * scale);
-
-            // janelas
-            ctx.strokeRect(w * 0.18, roofH + h * 0.28, 18 * scale, 14 * scale);
-            ctx.strokeRect(w * 0.66, roofH + h * 0.28, 18 * scale, 14 * scale);
-
-            // divisões internas
+            // centro do livro
             ctx.beginPath();
-            ctx.moveTo(0, roofH + h * 0.5);
-            ctx.lineTo(w, roofH + h * 0.5);
-            ctx.moveTo(w * 0.32, roofH);
-            ctx.lineTo(w * 0.32, roofH + h);
-            ctx.moveTo(w * 0.68, roofH);
-            ctx.lineTo(w * 0.68, roofH + h);
+            ctx.moveTo(w * 0.5, 8 * scale);
+            ctx.lineTo(w * 0.5, h * 0.72);
             ctx.stroke();
 
-            // andaime lateral
-            ctx.strokeStyle = `rgba(255,255,255,${opacity * 0.55})`;
-            ctx.beginPath();
-            ctx.moveTo(-24 * scale, roofH + h);
-            ctx.lineTo(-24 * scale, roofH - 10 * scale);
-            ctx.lineTo(-8 * scale, roofH - 10 * scale);
-            ctx.lineTo(-8 * scale, roofH + h);
-            ctx.stroke();
+            // linhas das páginas
+            ctx.strokeStyle = `rgba(255,255,255,${opacity * 0.4})`;
 
-            ctx.beginPath();
-            ctx.moveTo(-24 * scale, roofH + h * 0.25);
-            ctx.lineTo(-8 * scale, roofH + h * 0.25);
-            ctx.moveTo(-24 * scale, roofH + h * 0.55);
-            ctx.lineTo(-8 * scale, roofH + h * 0.55);
-            ctx.stroke();
+            for (let i = 1; i <= 3; i++) {
+                const yy = 18 * scale + i * 10 * scale;
 
-            // chão técnico
-            ctx.strokeStyle = `rgba(38, 97, 156, ${opacity * 0.7})`;
+                ctx.beginPath();
+                ctx.moveTo(w * 0.1, yy);
+                ctx.lineTo(w * 0.42, yy - 2 * scale);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(w * 0.58, yy - 2 * scale);
+                ctx.lineTo(w * 0.9, yy);
+                ctx.stroke();
+            }
+
+            // brilho inferior
+            ctx.strokeStyle = `rgba(0,198,247,${opacity * 0.45})`;
             ctx.beginPath();
-            ctx.moveTo(-40 * scale, roofH + h + 14 * scale);
-            ctx.lineTo(w + 40 * scale, roofH + h + 14 * scale);
+            ctx.moveTo(-16 * scale, h * 0.85);
+            ctx.lineTo(w + 16 * scale, h * 0.85);
             ctx.stroke();
 
             ctx.restore();
         };
 
-        const drawHouses = (offsetX: number, offsetY: number) => {
-            houses.forEach((house, index) => {
-                house.pulse += house.pulseSpeed;
-                const pulseFactor = (Math.sin(house.pulse) + 1) / 2;
+        const drawSymbols = (offsetX: number, offsetY: number) => {
+            symbols.forEach((symbol, index) => {
+                symbol.pulse += symbol.pulseSpeed;
+                const pulseFactor = (Math.sin(symbol.pulse) + 1) / 2;
 
-                const parallaxX = offsetX * (0.18 + index * 0.02);
-                const parallaxY = offsetY * (0.18 + index * 0.02);
+                const parallaxX = offsetX * (0.16 + index * 0.02);
+                const parallaxY = offsetY * (0.16 + index * 0.02);
 
-                drawHouseWireframe(
-                    house.x + parallaxX,
-                    house.y + parallaxY,
-                    house.scale,
-                    house.opacity,
-                    pulseFactor
+                drawOpenBook(
+                    symbol.x + parallaxX,
+                    symbol.y + parallaxY,
+                    symbol.scale,
+                    symbol.opacity,
+                    pulseFactor,
+                    symbol.rotation
                 );
             });
         };
 
-        const drawAnimatedBuildLines = () => {
+        const drawAnimatedTrails = () => {
             ctx.save();
-            ctx.lineWidth = 1.4;
+            ctx.lineWidth = 1.3;
 
-            buildLines.forEach((line) => {
+            trails.forEach((line) => {
                 line.progress += line.speed;
                 if (line.progress > 1 + line.delay) {
                     line.progress = 0;
@@ -286,23 +299,23 @@ export default function RMEngineeringSeriousBackground() {
                 ctx.beginPath();
                 ctx.moveTo(line.x1, line.y1);
                 ctx.lineTo(currentX, currentY);
-                ctx.strokeStyle = 'rgba(212, 175, 55, 0.13)';
+                ctx.strokeStyle = 'rgba(213,160,51,0.12)';
                 ctx.stroke();
 
                 ctx.beginPath();
                 ctx.arc(currentX, currentY, 2, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.18)';
+                ctx.fillStyle = 'rgba(213,160,51,0.18)';
                 ctx.fill();
             });
 
             ctx.restore();
         };
 
-        const drawLargeBlueprintShapes = (offsetX: number, offsetY: number) => {
+        const drawLargeFrames = (offsetX: number, offsetY: number) => {
             const shapes = [
-                { x: width * 0.08, y: height * 0.14, w: 180, h: 110 },
-                { x: width * 0.74, y: height * 0.12, w: 150, h: 90 },
-                { x: width * 0.68, y: height * 0.72, w: 170, h: 110 },
+                { x: width * 0.06, y: height * 0.16, w: 180, h: 100 },
+                { x: width * 0.72, y: height * 0.68, w: 190, h: 110 },
+                { x: width * 0.76, y: height * 0.14, w: 140, h: 84 },
             ];
 
             ctx.save();
@@ -326,6 +339,16 @@ export default function RMEngineeringSeriousBackground() {
             ctx.restore();
         };
 
+        const drawTopLight = () => {
+            const gradient = ctx.createLinearGradient(0, 0, 0, height * 0.5);
+            gradient.addColorStop(0, 'rgba(255,255,255,0.06)');
+            gradient.addColorStop(0.35, 'rgba(213,160,51,0.05)');
+            gradient.addColorStop(1, 'rgba(255,255,255,0)');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height * 0.6);
+        };
+
         const animate = () => {
             mouse.x += (mouse.tx - mouse.x) * 0.03;
             mouse.y += (mouse.ty - mouse.y) * 0.03;
@@ -334,12 +357,14 @@ export default function RMEngineeringSeriousBackground() {
             const offsetY = (mouse.y - height / 2) * 0.01;
 
             drawBackground();
+            drawTopLight();
             drawGrid();
             drawAtmosphere(offsetX, offsetY);
-            drawBlueprintDots();
-            drawLargeBlueprintShapes(offsetX, offsetY);
-            drawAnimatedBuildLines();
-            drawHouses(offsetX, offsetY);
+            drawSoftCross(offsetX, offsetY);
+            drawLightDots();
+            drawLargeFrames(offsetX, offsetY);
+            drawAnimatedTrails();
+            drawSymbols(offsetX, offsetY);
 
             animationFrame = requestAnimationFrame(animate);
         };
