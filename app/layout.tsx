@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import "./global.css";
+import "@/app/globals.css";
 import EbenezerFaithEducationBackground from "@/components/landing/BackgroundEbenezer";
 
 
