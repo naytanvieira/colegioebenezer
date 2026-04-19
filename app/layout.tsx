@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import "./globals.css";
+import "./global.css";
 import EbenezerFaithEducationBackground from "@/components/landing/BackgroundEbenezer";
 
 
 export const metadata: Metadata = {
-  title: "RMT ENGENHARIA",
+  title: "Colegio Ebenezer",
   description:
-    "Desenvolvemos obras, reformas e soluções em engenharia com visão técnica, acabamento de excelência e compromisso com cada detalhe do seu projeto.",
+    "Um ambiente acolhedor, seguro e cheio de carinho para os primeiros passos do desenvolvimento infantil, com base em princípios cristãos e aprendizado lúdico.",
 };
 
 export default function RootLayout({
