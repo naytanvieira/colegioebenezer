@@ -129,7 +129,7 @@ export default function ColegioEbenezerLandingPage() {
             </nav>
 
             <a
-              href="https://wa.me/55319200013319"
+              href="https://wa.me/5531920013319"
               className="hidden rounded-full bg-[#d5a033] px-5 py-3 text-sm font-semibold text-[#0b1633] transition hover:scale-[1.02] lg:inline-flex"
             >
               Agendar visita
@@ -173,7 +173,7 @@ export default function ColegioEbenezerLandingPage() {
                 className="mt-8 flex flex-col gap-4 sm:flex-row"
               >
                 <a
-                  href="https://wa.me/55319200013319"
+                  href="https://wa.me/5531920013319"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d5a033] px-6 py-4 font-semibold text-[#0b1633] shadow-xl shadow-[#d5a033]/20 transition hover:-translate-y-0.5"
                 >
                   <MessageCircle className="h-5 w-5" />
@@ -481,14 +481,14 @@ export default function ColegioEbenezerLandingPage() {
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <a
-                    href="https://wa.me/55319200013319"
+                    href="https://wa.me/5531920013319"
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d5a033] px-6 py-4 font-semibold text-[#0b1633] transition hover:-translate-y-0.5"
                   >
                     <MessageCircle className="h-5 w-5" />
                     Quero falar no WhatsApp
                   </a>
                   <a
-                    href="tel:+55319200013319"
+                    href="tel:+5531920013319"
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
                   >
                     <Phone className="h-5 w-5" />
@@ -506,7 +506,7 @@ export default function ColegioEbenezerLandingPage() {
                   </div>
                   <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
                     <p className="text-xs uppercase tracking-[0.25em] text-[#f0d28a]">WhatsApp</p>
-                    <p className="mt-2 text-sm">(00) 00000-0000</p>
+                    <p className="mt-2 text-sm">(31) 9 3316-9230</p>
                   </div>
                   <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
                     <p className="text-xs uppercase tracking-[0.25em] text-[#f0d28a]">Endereço</p>
