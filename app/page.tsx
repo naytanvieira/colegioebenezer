@@ -77,17 +77,18 @@ const pilares = [
 
 const depoimentos = [
   {
-    name: 'Família Oliveira',
-    text: 'O Colégio Ebenezer nos transmite paz e confiança. Vemos no nosso filho não apenas evolução escolar, mas também crescimento em valores e comportamento.',
+    name: 'Rosana',
+    text: 'Sou Rosana mãe da Ana Clara, ela é muito feliz no Ebenezer. O amor e cuidado que ela encontrou através dos professores e diretores do colégio fazem dela todos os dias uma pessoa melhor, pois princípios bíblicos fazem toda a diferença na construção da personalidade de uma criança, sou muito grata!',
+    image: "/dep.jpg"
   },
-  {
-    name: 'Família Santos',
-    text: 'É uma escola que realmente cuida. O ambiente é acolhedor, a equipe é atenciosa e sentimos que nossa filha está sendo preparada para a vida.',
-  },
-  {
-    name: 'Família Rocha',
-    text: 'Encontramos no Colégio Ebenezer o equilíbrio que buscávamos: ensino de qualidade, disciplina, carinho e princípios cristãos bem presentes no dia a dia.',
-  },
+  // {
+  //   name: 'Família Santos',
+  //   text: 'É uma escola que realmente cuida. O ambiente é acolhedor, a equipe é atenciosa e sentimos que nossa filha está sendo preparada para a vida.',
+  // },
+  // {
+  //   name: 'Família Rocha',
+  //   text: 'Encontramos no Colégio Ebenezer o equilíbrio que buscávamos: ensino de qualidade, disciplina, carinho e princípios cristãos bem presentes no dia a dia.',
+  // },
 ];
 
 const stats = [
@@ -442,24 +443,47 @@ export default function ColegioEbenezerLandingPage() {
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {depoimentos.map((depoimento, index) => (
             <motion.div
-              key={depoimento.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
-              className="rounded-[2rem] bg-white p-7 shadow-[0_18px_70px_rgba(11,22,51,0.06)] ring-1 ring-slate-200"
-            >
-              <div className="flex items-center justify-between">
-                <Quote className="h-9 w-9 text-[#d5a033]" />
-                <div className="flex gap-1 text-[#d5a033]">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
-                  ))}
-                </div>
-              </div>
-              <p className="mt-6 text-sm leading-8 text-slate-600">{depoimento.text}</p>
-              <p className="mt-6 text-base font-bold text-[#0b1633]">{depoimento.name}</p>
-            </motion.div>
+  key={depoimento.name}
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.45, delay: index * 0.06 }}
+  className="rounded-[2rem] bg-white p-7 shadow-[0_18px_70px_rgba(11,22,51,0.06)] ring-1 ring-slate-200"
+>
+  {/* HEADER */}
+  <div className="flex items-center justify-between">
+    <Quote className="h-9 w-9 text-[#d5a033]" />
+
+    <div className="flex gap-1 text-[#d5a033]">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className="h-4 w-4 fill-current" />
+      ))}
+    </div>
+  </div>
+
+  {/* TEXTO */}
+  <p className="mt-6 text-sm leading-8 text-slate-600">
+    {depoimento.text}
+  </p>
+
+  {/* FOOTER COM IMAGEM */}
+  <div className="mt-6 flex items-center gap-4">
+    <img
+      src={depoimento.image}
+      alt={depoimento.name}
+      className="w-12 h-12 rounded-full object-cover shadow-md"
+    />
+
+    <div>
+      <p className="text-base font-bold text-[#0b1633]">
+        {depoimento.name}
+      </p>
+      <p className="text-sm text-slate-500">
+        {depoimento.text}
+      </p>
+    </div>
+  </div>
+</motion.div>
           ))}
         </div>
       </section>
@@ -510,7 +534,7 @@ export default function ColegioEbenezerLandingPage() {
                   </div>
                   <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
                     <p className="text-xs uppercase tracking-[0.25em] text-[#f0d28a]">Endereço</p>
-                    <p className="mt-2 text-sm">Rua Exemplo, 123 — Bairro Exemplo</p>
+                    <p className="mt-2 text-sm">R. Teodoro Marquês, 65 - Várzea, Lagoa Santa</p>
                   </div>
                 </div>
               </div>
