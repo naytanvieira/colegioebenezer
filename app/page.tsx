@@ -79,7 +79,7 @@ const depoimentos = [
   {
     name: 'Rosana',
     text: 'Sou Rosana mãe da Ana Clara, ela é muito feliz no Ebenezer. O amor e cuidado que ela encontrou através dos professores e diretores do colégio fazem dela todos os dias uma pessoa melhor, pois princípios bíblicos fazem toda a diferença na construção da personalidade de uma criança, sou muito grata!',
-    image: "/dep.jpg"
+    image: "/dep.jpeg"
   },
   // {
   //   name: 'Família Santos',
@@ -479,7 +479,7 @@ export default function ColegioEbenezerLandingPage() {
         {depoimento.name}
       </p>
       <p className="text-sm text-slate-500">
-        {depoimento.text}
+        
       </p>
     </div>
   </div>
