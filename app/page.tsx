@@ -471,7 +471,7 @@ export default function ColegioEbenezerLandingPage() {
     <img
       src={depoimento.image}
       alt={depoimento.name}
-      className="w-[80px] h-[80px] rounded-full object-cover shadow-md"
+      className="w-[50px] h-[50px] rounded-full object-cover shadow-md"
     />
 
     <div>
